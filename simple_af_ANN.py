@@ -1,9 +1,8 @@
-# this is an implementation of a simple neural netork from scratch only using numpy
+# this is an implementation of a simple neural network with 2 hidden layers from scratch (only using numpy)
 # for now it takes as input points which for 3 clusters and it tries to guess where the new point belongs
-# for now 3 clusters are centered at (0,-2), (2,2) and (2,-2)
-# it gives the output as values close to 0 for (0,-2), 0.5 for (2,2) and around 1 for (2,-2)
+# for now 3 clusters are centered at (0,-20), (20,20) and (20,-20)
+# it gives the output as values close to 0 for (0,-20), 0.5 for (20,20) and around 1 for (20,-20)
 # the case where it gives multiple classification is still to done, i.e output layer > 1
-# the current neural network has 2 hidden layers as of now
 
 
 import numpy as np
@@ -87,9 +86,6 @@ def backwardPropagation(Y, layer3, layer2, layer1, layer0, W3, b3, W2, b2, W1, b
 	if i % 10000 == 0:
 		print ("Error:" + str(np.mean(np.abs(layer3Error))))
 	layer3Gradient = layer3Error * activate(layer3, deriv=True)
-	#print("shape of l2Error")
-	#print (l2Error.shape)
-	#print(l2Error)
 	layer2Error = layer3Gradient.dot(W3.T)
 	layer2Gradient = layer2Error * activate(layer2, deriv=True)
 	#print("shape of layer2Gradient")
