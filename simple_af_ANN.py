@@ -8,7 +8,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-samplesPerClass = 1
+samplesPerClass = 200
 
 X1 = np.random.randn(samplesPerClass, 2) + np.array([0, -20])
 X2 = np.random.randn(samplesPerClass, 2) + np.array([20,20])
@@ -18,7 +18,6 @@ X = np.vstack([X1, X2, X3])
 #print(X)
 #print(X.shape)
 Y = np.array([0]*samplesPerClass + [0.5]*samplesPerClass + [1]*samplesPerClass)
-Y = Y.T
 Y = np.reshape(Y, (samplesPerClass*3,1))
 plt.scatter(X[:,0], X[:,1], c=Y, s=100, alpha=0.5)
 #plt.show()
@@ -80,12 +79,16 @@ def backwardPropagation(Y, layer3, layer2, layer1, layer0, W3, b3, W2, b2, W1, b
 	#print (layer1.shape)
 	#print(layer1)
 	#print(Y)
-	#print(layer2)
+	#print(layer3)
 
 	layer3Error = Y - layer3
-	if i % 10000 == 0:
+	#print(layer3Error)
+	if i % 1000 == 0:
 		print ("Error:" + str(np.mean(np.abs(layer3Error))))
 	layer3Gradient = layer3Error * activate(layer3, deriv=True)
+	#print("shape of l2Error")
+	#print (l2Error.shape)
+	#print(l2Error)
 	layer2Error = layer3Gradient.dot(W3.T)
 	layer2Gradient = layer2Error * activate(layer2, deriv=True)
 	#print("shape of layer2Gradient")
@@ -111,7 +114,7 @@ def backwardPropagation(Y, layer3, layer2, layer1, layer0, W3, b3, W2, b2, W1, b
 	#b1 += 0.1 * layer1Gradient.mean()
 	return W1, b1, W2, b2, W3, b3
 
-for i in range(100000):
+for i in range(10000):
 	layer1, layer2, layer3 = forwardPropagation(X, W1, b1, W2, b2, W3, b3)
 	W1, b1, W2, b2, W3, b3 = backwardPropagation(Y, layer3, layer2, layer1, X, W3, b3, W2, b2, W1, b1, i)
 
