@@ -1,5 +1,5 @@
 Implementations of some Neural Networks.
-This is done as a part of learning the diffenrent architectures, the math and developing a deeper understanding.
+This is done as a part of learning the different architectures, the math and developing a deeper understanding.
 
 Some good resources which helped.
 
