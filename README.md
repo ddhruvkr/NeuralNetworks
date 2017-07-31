@@ -9,3 +9,6 @@ http://karpathy.github.io/2015/05/21/rnn-effectiveness/
 LSTM
 http://colah.github.io/posts/2015-08-Understanding-LSTMs/
 http://proceedings.mlr.press/v37/jozefowicz15.pdf
+
+How LSTM solves the vanishing gradient problem
+http://harinisuresh.com/2016/10/09/lstms/
